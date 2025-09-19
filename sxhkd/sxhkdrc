@@ -1,20 +1,16 @@
-# My dots are here
+#
 # wm independent hotkeys
 #
 
 # terminal emulator
-alt + Return
+super + Return
 	st
-#	urxvt
 
-# program launcher
-alt + e
-	dmenu_run -fn 'HackNerdFont-12' -nb '#1e1e2e' -nf '#585b70' -sb '#1e1e2e' -sf '#cdd6f4' -h '24'
-alt + shift + e
-	rofi -show drun
+super + b
+	qutebrowser
 
 # make sxhkd reload its configuration files:
-alt + Escape
+super + Escape
 	pkill -USR1 -x sxhkd
 
 #
@@ -22,11 +18,11 @@ alt + Escape
 #
 
 # quit/restart bspwm
-super + alt + {q,r}
+ctrl + alt + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
-alt + {_,shift + }q
+super + {_,shift + }q
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
@@ -49,6 +45,9 @@ super + g
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
+F11
+    bspc node -t '~fullcreen'
+
 # set the node flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
@@ -58,7 +57,7 @@ super + ctrl + {m,x,y,z}
 #
 
 # focus the node in the given direction
-alt + {_,shift + }{a,s,w,d}
+super + {_,shift + }{a,s,w,d}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
@@ -84,7 +83,7 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-alt + {_,shift + }{1-9,0}
+super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
@@ -98,6 +97,12 @@ super + ctrl + {h,j,k,l}
 # preselect the ratio
 super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
+
+ctrl + alt + 0
+    bspc config split_ratio	0.618
+
+ctrl + alt + 1
+    bspc config split_ratio	0.5
 
 # cancel the preselection for the focused node
 super + ctrl + space
@@ -120,14 +125,9 @@ super + alt + shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window
-super + {Left,Down,Up,Right}
+alt + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-alt + {t,space,f}
-	bspc node -t {tiled,floating,fullscreen}
-
-#alt +f
-#	bspc node -t \~fullscreen
 
 #Volume Control
 XF86AudioLowerVolume
@@ -146,4 +146,3 @@ XF86MonBrightnessUp
 #Print Screen
 Print
     shotgun $(hacksaw -f "-i %i -g %g") - | xclip -t 'image/png' -selection clipboard
-    #flameshot gui
