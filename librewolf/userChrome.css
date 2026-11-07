@@ -1,0 +1,20 @@
+
+#forward-button, #back-button, #PanelUI-button, #TabsToolbar, .searchmode-switcher {
+    visibility: collapse;
+}
+
+#nav-bar {
+    --toolbar-field-border-color-focus: transparent
+}
+
+#urlbar-input::placeholder {
+    opacity: 0 !important;
+}
+
+* {
+    border-radius: 0px !important;  
+    /*background-color: black !important;
+    border-color: black !important;*/
+    font-family: "IosevkaTerm Nerd Font" !important;
+    font-size: 20pt !important; 
+}
